@@ -19,4 +19,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query("update User set role = :role where username = :user_name")
     void updateUserRole(@Param("user_name") String username, @Param("role") Role role);
+
+    @Modifying
+    @Query("update User set clockedIn = :clockedIn where username = :user_name")
+    void updateUserClockedIn(@Param("user_name") String username, @Param("clockedIn") Boolean clockedIn);
+
 }

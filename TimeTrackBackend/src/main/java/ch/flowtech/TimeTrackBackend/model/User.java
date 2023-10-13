@@ -24,9 +24,19 @@ public class User {
     @Column(name = "create_time", nullable = false)
     private LocalDateTime createTime;
 
+    @Column(name = "update_time", nullable = false)
+    private LocalDateTime updateTime;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Role role;
+
+    @Column(name = "clocked_in", nullable = false)
+    private boolean clockedIn;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     @Transient
     private String accessToken;
@@ -97,5 +107,29 @@ public class User {
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public boolean isClockedIn() {
+        return clockedIn;
+    }
+
+    public void setClockedIn(boolean clockedIn) {
+        this.clockedIn = clockedIn;
     }
 }

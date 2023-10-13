@@ -126,7 +126,6 @@ public class UserPrincipal implements UserDetails {
         }
     }
 
-    // To initiate the builder
     public static Builder builder() {
         return new Builder();
     }

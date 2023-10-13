@@ -20,10 +20,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @PutMapping("change/{role}") //api/user/change/{role}
+    @PutMapping("change/role/{role}") // api/user/change/{role}
     public ResponseEntity<?> changeRole(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable Role role) {
         userService.changeRole(role, userPrincipal.getUsername());
+        return ResponseEntity.ok(true);
+    }
+
+    @PutMapping("change/clocked-in/{clockedIn}") // api/user/change/{clockedIn}
+    public ResponseEntity<?> changeClockedIn(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable Boolean clockedIn) {
+        userService.changeClockedIn(clockedIn, userPrincipal.getUsername());
         return ResponseEntity.ok(true);
     }
 }

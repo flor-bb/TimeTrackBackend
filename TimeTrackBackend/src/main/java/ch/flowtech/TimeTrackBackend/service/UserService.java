@@ -8,8 +8,10 @@ import java.util.Optional;
 
 public interface UserService {
 
+    User findUserById(Long id);
     User saveUser(User user);
     Optional<User> findUserByUsername(String username);
     void changeRole(Role newRole, String username);
     List<User> findAllUsers();
+    void changeClockedIn(Boolean clockedIn, String username);
 }
